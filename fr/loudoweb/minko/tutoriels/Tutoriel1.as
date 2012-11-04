@@ -1,4 +1,4 @@
-package MinkoTutoriels
+package fr.loudoweb.minko.tutoriels
 {
 	import aerys.minko.render.geometry.primitive.CubeGeometry;
 	import aerys.minko.render.material.basic.BasicMaterial;
@@ -30,7 +30,9 @@ package MinkoTutoriels
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			_viewport = new Viewport();
+			//le viewport est un sprite, c'est pourquoi on l'ajoute à la displayList flash.
 			addChild(_viewport);
+			//la scène est un graphe de scène contenant tous les éléments 3d sous forme de noeuds.
 			_scene = new Scene();
 			addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 			createCamera();
@@ -43,12 +45,13 @@ package MinkoTutoriels
 		}
 		protected function createCamera():void {
 			var camera : Camera = new Camera();
-			//la caméra est un élément de la scène, c'est pourquoi on l'ajoute dans la scène
+			//la caméra est un noeud de la scène, c'est pourquoi on l'ajoute dans la scène
 			_scene.addChild(camera);
 		}
 		protected function createCube():void {
-			//le mesh est un élément de la scène qui nécessite une géométrie et un matériau.
+			//le mesh est un noeud de la scène qui nécessite une géométrie et un matériau.
 			var cube:Mesh = new Mesh(CubeGeometry.cubeGeometry, new BasicMaterial( { diffuseColor:0x00ff00ff } ));
+			//on déplace le cube pour l'éloigner de la caméra et ainsi le rendre visible dans notre application
 			cube.transform.translationZ = 5.;
 			_scene.addChild(cube);
 		}
