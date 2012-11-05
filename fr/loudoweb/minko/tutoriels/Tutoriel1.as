@@ -29,11 +29,12 @@ package fr.loudoweb.minko.tutoriels
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			_viewport = new Viewport();
-			//le viewport est un sprite, c'est pourquoi on l'ajoute à la displayList flash.
-			addChild(_viewport);
 			//la scène est un graphe de scène contenant tous les éléments 3d sous forme de noeuds.
 			_scene = new Scene();
+			//le viewport recevra le rendu 3d
+			_viewport = new Viewport();
+			//le viewport est un sprite, c'est pourquoi on l'ajoute à la displayList flash
+			addChild(_viewport);
 			addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 			createCamera();
 			createCube();
